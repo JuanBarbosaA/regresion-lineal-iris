@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 from sklearn import datasets
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
@@ -31,3 +32,17 @@ largo_petalo = float(input("Ingrese el largo del pétalo: "))
 
 resultado = predecir_flor(ancho_sepalo, largo_sepalo, ancho_petalo, largo_petalo)
 print(f"La flor predicha es: {resultado}")
+
+
+
+
+
+iris = datasets.load_iris()
+
+df = pd.DataFrame(iris.data, columns=iris.feature_names)
+df["target"] = iris.target
+
+# guardar en CSV
+df.to_csv("iris.csv", index=False)
+
+print("Dataset guardado como iris.csv")
